@@ -3,7 +3,7 @@ module Api
     class CategoriesController < ApplicationController  
       #skip_before_filter :verify_authenticity_token, :only => [:create]
                                                                                
-      before_filter :restrict_access
+      before_filter :restrict_access, :only => [:index]
       
       respond_to :json
             
