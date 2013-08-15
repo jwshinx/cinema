@@ -1,6 +1,11 @@
 Cinema::Application.routes.draw do
+  resources :movies
   resources :categories
-
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :categories
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
