@@ -1,0 +1,19 @@
+!!!
+%html
+ %head
+  %title
+   Cinema
+   \|
+   = "#{params[:controller].capitalize}"
+  = favicon_link_tag 'favicon.ico'
+  = stylesheet_link_tag "application", :media => "all"
+  - # = stylesheet_link_tag params[:controller]
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+ %body  
+  .container-fluid
+   .row-fluid      
+    .span2
+     = render 'shared/menu'
+    .span10
+     = yield
