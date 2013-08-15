@@ -4,11 +4,11 @@ module Api
       respond_to :json
             
       def index
-        respond_with Category.all
+        respond_with Category.select('name, description').all
       end                     
       
       def show
-        respond_with Category.find(params[:id])
+        respond_with Category.select('name, description').find(params[:id])
       end 
       def create
         respond_with Category.create(params[:category])
