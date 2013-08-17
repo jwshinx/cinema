@@ -1,7 +1,9 @@
 module Api
   module V1
-    class CategoriesController < ApplicationController  
-      #skip_before_filter :verify_authenticity_token, :only => [:create]
+    class CategoriesController < ApplicationController     
+      # curl post gets me this, so lets not require that for now.
+      # WARNING: Can't verify CSRF token authenticity
+      skip_before_filter :verify_authenticity_token, :only => [:create]
                                                                                
       before_filter :restrict_access, :only => [:index]
       

@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe Category do 
+  describe "normally" do
+    it "invalid without name" do
+      category = Category.new name: '', description: 'sdkfl'
+      category.should_not be_valid
+    end
+    it "valid without description" do
+      category = Category.new name: 'drama', description: ''
+      category.should be_valid       
+      category.description.should == 'description of drama'
+    end  
+  end
   describe "thru api" do
     it "eee" do  
       pending 'gotta stub this'                                                      
@@ -12,6 +23,6 @@ describe Category do
       #response = HTTParty.get("http://localhost:3000/api/v1/categories/5") 
       puts response.body, response.code, response.message, response.headers.inspect
         
-    end               
+    end                                                                                                                
   end
 end
