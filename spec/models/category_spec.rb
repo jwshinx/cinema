@@ -3,13 +3,18 @@ require 'spec_helper'
 describe Category do 
   describe "normally" do
     it "invalid without name" do
-      category = Category.new name: '', description: 'sdkfl'
-      category.should_not be_valid
+      c = Category.new name: '', description: 'sdkfl'
+      c.should_not be_valid
     end
     it "valid without description" do
       category = Category.new name: 'drama', description: ''
       category.should be_valid       
       category.description.should == 'description of drama'
+    end
+    it "doesn't create category with invalid name" do
+      trying {
+       Category.new name: '', description: 'sdkfl'
+      }.should_not change(Category, :count).by(1)
     end  
   end
   describe "thru api" do
