@@ -1,0 +1,19 @@
+- if @movies.empty?
+  %h1= "No Movies in #{params[:year]}"
+- else
+  %h1= "Movies of #{params[:year]}"
+  %table
+    %tr
+      %th Title
+      %th Description          
+      %th Category
+      %th
+      %th
+      %th
+  
+    - @movies.each do |movie|
+      %tr
+        %td= movie.title
+        %td= movie.description
+        %td= movie.category.name
+

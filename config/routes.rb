@@ -1,4 +1,7 @@
-Cinema::Application.routes.draw do
+Cinema::Application.routes.draw do   
+          
+  get 'movies/find_year/:year' => 'movies#find_year', :as => :find_year
+  
   resources :movies
   resources :categories
   namespace :api, defaults: {format: 'json'} do

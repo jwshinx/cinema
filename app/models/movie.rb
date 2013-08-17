@@ -1,5 +1,5 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :category_id, :description, :title   
+  attr_accessible :category_id, :description, :title, :year   
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
    

@@ -3,7 +3,8 @@
 %table
   %tr
     %th Title
-    %th Description
+    %th Description          
+    %th Year
     %th Category
     %th
     %th
@@ -13,7 +14,8 @@
     %tr
       %td= movie.title
       %td= movie.description
-      %td= movie.category_id
+      %td= movie.year
+      %td= movie.category.name
       %td= link_to 'Show', movie
       %td= link_to 'Edit', edit_movie_path(movie)
       %td= link_to 'Destroy', movie, :method => :delete, :data => { :confirm => 'Are you sure?' }

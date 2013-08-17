@@ -15,7 +15,7 @@ feature 'Category feature', %q{
 
   scenario 'add a category' do 
     visit "/categories/new"
-    fill_in 'category[name]', :with => 'comedy'
+    fill_in 'category[name]', :with => 'comedy'             
     fill_in 'category[description]', :with => 'funny stuff'
     click_button "Save"                                    
     should_be_on "/categories/#{Category.find_by_name('comedy').slug}"
@@ -37,7 +37,7 @@ feature 'Category feature', %q{
   scenario 'cannot edit a category without a name' do 
     c = create_category 'drama', 'blah' 
     visit "/categories/#{c.slug}/edit/"
-    fill_in 'category[name]', :with => ''
+    fill_in 'category[name]', :with => '' 
     fill_in 'category[description]', :with => 'funny stuff'
     click_button "Save"                                    
     should_be_on "/categories/#{c.slug}"

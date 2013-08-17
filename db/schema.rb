@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130815211255) do
+ActiveRecord::Schema.define(:version => 20130817215637) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20130815211255) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "slug"
+    t.integer  "year"
   end
 
   add_index "movies", ["slug"], :name => "index_movies_on_slug"

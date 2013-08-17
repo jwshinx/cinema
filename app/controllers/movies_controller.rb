@@ -1,4 +1,9 @@
-class MoviesController < ApplicationController
+class MoviesController < ApplicationController      
+  
+  def find_year
+     #Movie.find_by_year params[:year].to_i
+     @movies = Movie.find_all_by_year params[:year].to_i
+  end
   # GET /movies
   # GET /movies.json
   def index

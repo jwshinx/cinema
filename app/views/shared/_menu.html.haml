@@ -1,4 +1,9 @@
 %ul       
   %li= link_to 'Home', root_path
   %li= link_to 'Categories', categories_path
-  %li= link_to 'Movies', movies_path
+  %li= link_to 'Movies', movies_path                                                 
+   
+%strong Movies by Year
+%ul  
+  - @movie_years.each do |year|
+    %li= link_to "#{year}", find_year_path(year)         
