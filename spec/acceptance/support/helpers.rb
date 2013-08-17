@@ -3,7 +3,10 @@ module HelperMethods
   def create_category name, desc
     Category.create name: name, description: desc
   end
-  
+  def create_movie title, category, desc, year
+    c = create_category category, 'fun'
+    Movie.create title: title, description: desc, year: year, category_id: c.id
+  end  
   def log_out
     visit "/logout"
   end
