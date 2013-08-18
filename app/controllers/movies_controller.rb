@@ -1,8 +1,9 @@
 class MoviesController < ApplicationController      
   
   def find_year
-     #Movie.find_by_year params[:year].to_i
-     @movies = Movie.find_all_by_year params[:year].to_i
+    #@movies = Movie.find_xxx_yyy 'gggg', 'uuuuu'
+    #@movies = Movie.send "find_all_made_in_#{params[:year]}"
+    @movies = Movie.find_all_by_year params[:year].to_i
   end
   # GET /movies
   # GET /movies.json

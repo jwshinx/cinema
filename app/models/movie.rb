@@ -8,5 +8,6 @@ class Movie < ActiveRecord::Base
   
   before_validation do |object|
     object.description = "description of #{object.title}" if object.description.blank?
-  end
+  end     
+  
 end

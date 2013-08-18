@@ -1,6 +1,7 @@
 require 'spec_helper'
 
-describe Movie do
+describe Movie do              
+  
   it "invalid without title" do
     movie = Movie.new title: '', description: '', category_id: 1
     movie.should_not be_valid
