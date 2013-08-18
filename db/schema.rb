@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130817215637) do
+ActiveRecord::Schema.define(:version => 20130818173117) do
+
+  create_table "actings", :force => true do |t|
+    t.integer  "actor_id"
+    t.integer  "movie_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "actors", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"

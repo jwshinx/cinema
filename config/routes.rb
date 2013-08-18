@@ -1,5 +1,8 @@
 Cinema::Application.routes.draw do   
           
+  resources :actors
+
+
   get 'movies/find_year/:year' => 'movies#find_year', :as => :find_year
   
   resources :movies

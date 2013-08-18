@@ -1,0 +1,26 @@
+= form_for @actor do |f|
+  - if @actor.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@actor.errors.count, "error")} prohibited this actor from being saved:"
+      %ul
+        - @actor.errors.full_messages.each do |msg|
+          %li= msg
+
+  .row
+    = f.label :firstname
+    = f.text_field :firstname
+  .row
+    = f.label :lastname
+    = f.text_field :lastname    
+  
+                                            
+  = f.fields_for :actings do |builder| 
+    .row
+      = builder.label :acting, 'Casted'
+      = builder.select :movie_id, Movie.order('title asc').all.collect {|r| [r.title, r.id]}, {:include_blank => true }
+      - unless f.object.new_record?
+        = builder.check_box :_destroy
+        = builder.label :_destroy, "Remove"
+
+  .actions
+    = f.submit 'Save'

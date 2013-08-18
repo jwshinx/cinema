@@ -1,0 +1,16 @@
+%p#notice= notice
+
+%p
+  %b Firstname:
+  = @actor.firstname
+%p
+  %b Lastname:
+  = @actor.lastname          
+
+%p
+  %b Cast of:
+  = @actor.movies.map{|m| m.title }.join(', ')
+
+= link_to 'Edit', edit_actor_path(@actor)
+\|
+= link_to 'Back', actors_path
