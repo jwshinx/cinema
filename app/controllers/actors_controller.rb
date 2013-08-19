@@ -10,6 +10,11 @@ class ActorsController < ApplicationController
     end
   end
 
+  def highest_pay
+    Actor.instance_eval { include Europe::Currency; include Mexico::Currency } 
+    @actors = Actor.all             
+  end
+  
   # GET /actors/1
   # GET /actors/1.json
   def show

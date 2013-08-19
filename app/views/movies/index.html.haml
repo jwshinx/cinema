@@ -9,13 +9,16 @@
     %th
     %th
     %th
+    %th
 
   - @movies.each do |movie|
     %tr
       %td= movie.title
       %td= movie.description
       %td= movie.year
-      %td= movie.category.name
+      %td= movie.category.name 
+      - # %td
+      %td= "#{movie.with_brackets}"
       %td= link_to 'Show', movie
       %td= link_to 'Edit', edit_movie_path(movie)
       %td= link_to 'Destroy', movie, :method => :delete, :data => { :confirm => 'Are you sure?' }

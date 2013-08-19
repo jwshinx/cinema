@@ -2,8 +2,29 @@
   %li= link_to 'Home', root_path
   %li= link_to 'Categories', categories_path
   %li= link_to 'Movies', movies_path                                                 
-  %li= link_to 'Actors', actors_path                                                 
-   
+  %li= link_to 'Actors', actors_path   
+
+
+%strong Revenues/Pay
+%ul  
+  %li= link_to 'Movie Revenues $M', revenues_path   
+  %li= link_to 'Actor Fees $M', highest_pay_path   
+                                             
+%strong Teen Favorite?
+%ul
+  - @actors.each do |actor|
+    %li= link_to "#{actor.fullname}", favorite_actor_path(actor.id, :teenager)
+
+%strong Adult Favorite?
+%ul
+  - @actors.each do |actor|
+    %li= link_to "#{actor.fullname}", favorite_actor_path(actor.id, :adult)
+
+%strong Senior Favorite?
+%ul
+  - @actors.each do |actor|
+    %li= link_to "#{actor.fullname}", favorite_actor_path(actor.id, :senior)    
+
 %strong Movies by Year
 %ul  
   - @movie_years.each do |year|

@@ -8,10 +8,21 @@
   = @movie.description
 %p
   %b Year:
-  = @movie.year
+  = @movie.year    
+%p
+  %b Gross (in $M / in &#8364;M):
+  = @movie.gross
+  \/
+  = @movie.in_euros('gross')      
+%p
+  %b Available Technologies (Blue Ray / High Def / Laserdisc):
+  = @movie.is_available_in_blue_ray?
+  = @movie.is_available_in_high_definition?
+  = @movie.is_available_in_laserdisc?
+
 %p
   %b Category:
-  = @movie.category_id
+  = @movie.category.name
 
 = link_to 'Edit', edit_movie_path(@movie)
 \|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130818173117) do
+ActiveRecord::Schema.define(:version => 20130818230721) do
 
   create_table "actings", :force => true do |t|
     t.integer  "actor_id"
@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(:version => 20130818173117) do
   create_table "actors", :force => true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "highest_pay"
   end
 
   create_table "api_keys", :force => true do |t|
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130818173117) do
     t.datetime "updated_at",  :null => false
     t.string   "slug"
     t.integer  "year"
+    t.integer  "gross"
   end
 
   add_index "movies", ["slug"], :name => "index_movies_on_slug"

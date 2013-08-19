@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController      
+  include Europe 
+  include Flare
   
   def find_year
     #@movies = Movie.find_xxx_yyy 'gggg', 'uuuuu'
@@ -9,17 +11,31 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     @movies = Movie.all     
-
+    puts with_dots { 'sddd'}  
+    puts "---> 1 #{Movie.first.to_s}"   
+    
+    Movie.instance_eval { include Decoration }
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @movies }
     end
+  end   
+  
+  def revenues
+    Movie.instance_eval { include Europe::Currency } 
+    @movies = Movie.all             
   end
 
   # GET /movies/1
   # GET /movies/1.json
   def show
     @movie = Movie.find(params[:id])
+    @movie.extend Europe::Currency
+    #class << @movie
+    #  include Europe::Currency
+    #end          
+
     if request.path != movie_path(@movie)  
       redirect_to @movie, status: :moved_permanently
     end

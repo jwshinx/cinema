@@ -1,0 +1,11 @@
+%h1= "#{@actor.fullname} Fan Favorites"
+%h2= "According to #{params[:type].pluralize.capitalize}"                                                                                     
+
+%br
+
+%p 
+  %strong Movies Likely Seen
+  = @info[:movies].empty? ? '---' : @info[:movies].join(', ')  
+%p
+  %strong Favorite Movie
+  = @info[:favorite_movie].nil? ? '---' : @info[:favorite_movie]

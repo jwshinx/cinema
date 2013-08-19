@@ -1,0 +1,14 @@
+%h1 Movie Revenues
+
+%table
+  %tr
+    %th Title
+    %th Revenue (in $M)
+    %th Revenue (in &#8364;M)  
+
+  - @movies.each do |movie|
+    %tr
+      %td= movie.title
+      %td= movie.gross
+      %td= movie.in_euros('gross')   
+                   

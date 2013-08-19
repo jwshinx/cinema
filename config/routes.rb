@@ -1,10 +1,12 @@
 Cinema::Application.routes.draw do   
           
-  resources :actors
+  get "favorites/favorite_actor"
 
-
-  get 'movies/find_year/:year' => 'movies#find_year', :as => :find_year
-  
+  get 'movies/revenues' => 'movies#revenues', :as => :revenues
+  get 'actors/highest_pay' => 'actors#highest_pay', :as => :highest_pay
+  get 'movies/find_year/:year' => 'movies#find_year', :as => :find_year      
+  get 'favorite_actor/:id/:type' => 'favorites#favorite_actor', :as => :favorite_actor
+  resources :actors  
   resources :movies
   resources :categories
   namespace :api, defaults: {format: 'json'} do

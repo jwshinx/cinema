@@ -1,0 +1,15 @@
+%h1 Highest Fee
+
+%table
+  %tr
+    %th Name
+    %th Pay (in $M)
+    %th Pay (in &#8364;M)  
+    %th Pay (in &#8369;M)  
+                      
+  - @actors.each do |actor|
+    %tr
+      %td= actor.fullname
+      %td= actor.highest_pay 
+      %td= actor.in_euros('highest_pay')    
+      %td= actor.in_pesos('highest_pay')    
