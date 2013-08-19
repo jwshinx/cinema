@@ -10,7 +10,7 @@ class Movie < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
    
-  validates :title, :description, :category_id, :presence => true
+  validates :title, :description, :category_id, :gross, :year, :presence => true
   belongs_to :category                     
   has_many :actors, :through => :actings
   has_many :actings, dependent: :destroy
@@ -28,3 +28,19 @@ class Movie < ActiveRecord::Base
     "Title: #{title}"
   end
 end
+
+# == Schema Information
+#
+# Table name: movies
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  description :string(255)
+#  category_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  slug        :string(255)
+#  year        :integer
+#  gross       :integer
+#
+

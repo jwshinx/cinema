@@ -2,8 +2,10 @@
 
 FactoryGirl.define do
   factory :movie do
-    title "MyString"
-    description "MyString"
+    title "godfather"
+    description "blah"
+    year 1970
+    gross 300
     category_id 1
   end
 end

@@ -10,7 +10,8 @@ gem 'haml'
 gem 'haml-rails'
 gem 'httparty'
 gem 'bootstrap-sass', '~> 2.3.2.0'
-gem 'friendly_id'            
+gem 'friendly_id'  
+gem 'annotate', ">=2.5.0"          
 
 # Gems used only for assets and not required
 # in production environments by default.
