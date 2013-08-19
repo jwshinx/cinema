@@ -1,3 +1,7 @@
-Thanks to Ryan Bates.
+Simple app with some real-world applications (arguable) of ruby spells outlined by Paolo Perotta.
+
+http://pragprog.com/book/ppmetr/metaprogramming-ruby
+
+Also, thanks to Ryan Bates.
 
 http://railscasts.com/episodes/350
