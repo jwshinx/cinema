@@ -1,9 +1,18 @@
 Given(/^I have no movies$/) do
   Movie.count.should == 0
-end               
+end
+Given(/^I have a year "(.*?)" "(.*?)" movie "(.*?)" with description "(.*?)" with gross "(.*?)"$/) do |arg1, arg2, arg3, arg4, arg5| 
+  steps %Q{
+    Given I have #{arg2} category with description #{arg2}
+  }
+  c = Category.find_by_name arg2
+  m = create_movie arg3, arg4, arg5, arg1, c                  
+  m.title.should == arg3
+end
+               
 When(/^I create a movie with title, description, category, year, and gross data: "(.*?)", "(.*?)", "(.*?)", "(.*?)", "(.*?)"$/) do |arg1, arg2, arg3, arg4, arg5|
   c = Category.find_by_name arg3 
-  c.nil? ? cid = nil : cid = c.id
+  c.nil? ? cid = nil : cid = c.id                                                
   Movie.create({ title: arg1, description: arg2, year: arg4, gross: arg5, category_id: cid })
 end 
 Then(/^I should see a new movie with "(.*?)" and "(.*?)", with "(.*?)" and "(.*?)"$/) do |arg1, arg2, arg3, arg4|
