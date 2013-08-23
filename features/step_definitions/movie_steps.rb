@@ -3,11 +3,17 @@ Given(/^I have no movies$/) do
 end
 Given(/^I have a year "(.*?)" "(.*?)" movie "(.*?)" with description "(.*?)" with gross "(.*?)"$/) do |arg1, arg2, arg3, arg4, arg5| 
   steps %Q{
-    Given I have #{arg2} category with description #{arg2}
+    Given I have "#{arg2}" category with description "#{arg2}"
   }
   c = Category.find_by_name arg2
   m = create_movie arg3, arg4, arg5, arg1, c                  
   m.title.should == arg3
+end
+Given(/^I select movie "(.*?)"$/) do |arg1|
+  select(arg1, :from => 'actor[actings_attributes][0][movie_id]')
+end
+Given(/^I fill in payment "(.*?)" million dollars$/) do |arg1|
+  fill_in('actor[actings_attributes][0][payment]', :with => arg1) 
 end
                
 When(/^I create a movie with title, description, category, year, and gross data: "(.*?)", "(.*?)", "(.*?)", "(.*?)", "(.*?)"$/) do |arg1, arg2, arg3, arg4, arg5|

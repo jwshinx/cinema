@@ -23,7 +23,7 @@ describe Movie do
     movie.gross = '' 
     movie.should_not be_valid       
   end
-
+               
 end
 
 # == Schema Information

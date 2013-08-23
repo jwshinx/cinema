@@ -1,5 +1,9 @@
 module ActorProxies
-  class FavoriteActorProxy
+  class FavoriteActorProxy             
+    instance_methods.each do |m|
+      undef_method m unless m.to_s =~ /^__|send|method_missing|respond_to?/
+    end
+    
     def initialize object, fan_type
       @object = object          
       @type = fan_type
@@ -29,6 +33,9 @@ module ActorProxies
         return @movies
       end
       super
+    end 
+    def respond_to?(method)
+      method =~ /^best_of_(teenager|adult|senior|.*)/ || super
     end
   end
 end

@@ -1,6 +1,7 @@
+
 = form_for @actor do |f|
   - if @actor.errors.any?
-    #error_explanation
+    #error_explanation.span12
       %h2= "#{pluralize(@actor.errors.count, "error")} prohibited this actor from being saved:"
       %ul
         - @actor.errors.full_messages.each do |msg|
@@ -12,17 +13,19 @@
   .row
     = f.label :lastname
     = f.text_field :lastname    
-  .row
-    = f.label :highest_pay
-    = f.text_field :highest_pay    
                                             
-  = f.fields_for :actings do |builder| 
-    .row
-      = builder.label :acting, 'Casted'
-      = builder.select :movie_id, Movie.order('title asc').all.collect {|r| [r.title, r.id]}, {:include_blank => true }
-      - unless f.object.new_record?
-        = builder.check_box :_destroy
-        = builder.label :_destroy, "Remove"
+  = f.fields_for :actings do |builder|  
+    .row  
+      .span3
+        = builder.label :acting, 'Casted'
+        = builder.select :movie_id, Movie.order('title asc').all.collect {|r| [r.title, r.id]}, {:include_blank => true }             
+      .span3
+        = builder.label :payment, 'Payment'
+        = builder.text_field :payment
+      .span6
+        - unless f.object.new_record?
+          = builder.check_box :_destroy
+          = builder.label :_destroy, "Remove"
 
-  .actions
+  .row
     = f.submit 'Save'

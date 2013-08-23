@@ -1,5 +1,7 @@
 class Acting < ActiveRecord::Base
-  attr_accessible :actor_id, :movie_id                                                                                                   
+  attr_accessible :actor_id, :movie_id, :payment  
+  validates :payment, :presence => true
+  validates :payment, numericality: { only_integer: true }                                                                                                
   belongs_to :actor
   belongs_to :movie
 end
@@ -13,5 +15,6 @@ end
 #  movie_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  payment    :integer
 #
 

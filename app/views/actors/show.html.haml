@@ -5,15 +5,20 @@
   = @actor.firstname
 %p
   %b Lastname:
-  = @actor.lastname          
-%p
-  %b Highest Pay:
-  = @actor.highest_pay          
+  = @actor.lastname                   
 
 %p
-  %b Cast of:
-  = @actor.movies.map{|m| m.title }.join(', ')
+  %b Total Earned ($M):
+  = @actor.total_earned( @actor.actings, :payment ){ @actor.movies.empty? }                                         
+  
+%p
+  %b Cast of: 
+  = @actor.actings.map{|a| "#{a.movie.title}: $#{a.payment}"}.join(', ')
 
+%p
+  %b Total Gross of Movies ($M):
+  = @actor.total_gross_of_movies( @actor.movies, :gross ){ @actor.movies.empty? }                          
+  
 = link_to 'Edit', edit_actor_path(@actor)
 \|
 = link_to 'Back', actors_path

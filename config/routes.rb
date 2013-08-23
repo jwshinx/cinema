@@ -1,6 +1,7 @@
 Cinema::Application.routes.draw do   
           
   get "favorites/favorite_actor"
+  get 'marketing/taglines' => 'marketing#taglines', :as => :taglines
 
   get 'movies/revenues' => 'movies#revenues', :as => :revenues
   get 'actors/highest_pay' => 'actors#highest_pay', :as => :highest_pay

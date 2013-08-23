@@ -1,8 +1,6 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @movie.title
+%h1= @movie.title
 %p
   %b Description:
   = @movie.description
@@ -22,7 +20,15 @@
 
 %p
   %b Category:
-  = @movie.category.name
+  = @movie.category.name 
+
+%p
+  %b Actors:
+  = @movie.actors.all.map{|a| "#{a.fullname}: $#{a.actings.first.payment}" }.join(', ')
+       
+%p
+  %b Tagline:
+  = @decorator.write
 
 = link_to 'Edit', edit_movie_path(@movie)
 \|

@@ -35,6 +35,10 @@ class MoviesController < ApplicationController
     #class << @movie
     #  include Europe::Currency
     #end          
+                                                                           
+    pre = lambda { "In a world, "}
+    post = lambda { " is one man..."}
+    @decorator = MovieDecorator.new @movie.actors.first.fullname, pre, post 
 
     if request.path != movie_path(@movie)  
       redirect_to @movie, status: :moved_permanently
